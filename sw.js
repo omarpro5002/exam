@@ -1,5 +1,5 @@
 /* keeps the student page on the phone so it opens on a weak or missing connection */
-const C='exam-v6';const FILES=['./','./index.html','./config.js'];
+const C='exam-v7';const FILES=['./','./index.html','./config.js'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(C).then(c=>c.addAll(FILES)).then(()=>self.skipWaiting()))});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k!==C).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});
 self.addEventListener('fetch',e=>{const u=new URL(e.request.url);if(e.request.method!=='GET'||u.origin!==location.origin||u.pathname.endsWith('admin.html'))return;
