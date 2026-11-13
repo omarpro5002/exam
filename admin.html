@@ -129,12 +129,12 @@
 كلمة المرور: ${t.pw}
 
 المواعيد:
-${(DB.settings.showTz||[e.tz]).map(s=>`• ${tzName(s)}: يُفتح ${fT(e.opens,s)}، آخر دخول ${fT(e.lastEntry,s)}، يُغلق ${fT(e.closes,s)}`).join(`
+${(DB.settings.showTz||[e.tz]).map(s=>`• ${tzName(s)}: يبدأ ${fT(e.opens,s)}`).join(`
 `)}
 التاريخ: ${fD(e.opens,e.tz)}
 المدة: ${e.dur} دقيقة من لحظة البدء.
 
-نصيحة: افتح المنصة قبل الموعد بساعة ليُحمَّل الاختبار على جهازك.
+نصيحة: ادخل بحسابك قبل الموعد بربع ساعة للتأكد من أن الدخول يعمل على جهازك، وتظهر لك الأسئلة عند بدء الوقت.
 ${DB.settings.org}`}function sendCreds(t){const e=t&&t.dataset&&t.dataset.s,s=DB.students.filter(a=>!a.archived&&a.active&&(!e||a.id===e));openModal("إرسال بيانات الدخول بالبريد",`<p class="small">${e?"تُرسل رسالة إلى هذا الطالب وحده. هذه معاينتها:":"تُرسل رسالة مستقلة لكل طالب من البريد المرتبط بالمنصة. هذه معاينة لأول رسالة:"}</p>
   <textarea class="input small" rows="12" readonly id="credPrev">${esc(credText(s[0]||{name:"",id:"",pw:""}))}</textarea>
   <p class="small muted">${s.length} رسالة جاهزة. يمكنك أيضًا نسخ جدول البيانات كله ولصقه في Excel.</p>
